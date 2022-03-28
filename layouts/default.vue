@@ -1,6 +1,12 @@
 <template>
   <v-app dark>
-    <v-app-bar dark dense>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant="miniVariant"
+      :clipped="clipped"
+      fixed
+      app
+    >
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -17,8 +23,17 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <side-bar></side-bar>
+    </v-navigation-drawer>
+    <v-app-bar
+      :clipped-left="clipped"
+      fixed
+      app
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <NuxtLink to="/"><vuetify-logo></vuetify-logo></NuxtLink>
+      <v-toolbar-title v-text="title" />
     </v-app-bar>
-
     <v-main>
       <v-container>
         <Nuxt />
@@ -51,12 +66,17 @@ export default {
           icon: 'mdi-information-variant',
           title: 'About',
           to: '/about'
+        },
+        {
+          icon: 'mdi-calendar-blank-outline',
+          title: 'Events',
+          to: '/events'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'The best platform for events'
     }
   }
 }
