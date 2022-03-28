@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'InspirePage',
+  name: 'AboutPage',
   data(){
     return{
       about: {}
